@@ -1,0 +1,19 @@
+{
+    "frames": [
+        [
+            {
+                "contents": "Savedcharacter"
+            },
+            {
+                "contents": "Savedtimer"
+            },
+            {
+                "contents": "Savedtextbox"
+            },
+            {
+                "value": "soundfile.midi",
+                "type": "sound"
+            }
+        ]
+    ]
+}

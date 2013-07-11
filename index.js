@@ -34,7 +34,21 @@ app.get('/game/read/:name',function(req,res){
 app.post('/scene/create/:name', function(req,res) {
     scene.create(req,res,db);
     //auth.user(req,res);
-    res.json({newScene:'created for '+req.params.name});
+    res.json({scene:'created for '+req.params.name});
 });
+
+app.post('/scene/update/:name/:number', function(req,res) {
+    scene.update(req,res,db);
+    //auth.user(req,res);
+    res.json({scene:'updated for '+req.params.name});
+});
+
+//Frame API
+app.post('/scene/drop/:name/:number',function(req,res){
+    scene.drop(req,res,db);
+    res.json({scene:'dropped for '+req.params.name});
+});
+
+//Start to listen to port
 
 app.listen(3000);
