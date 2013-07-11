@@ -24,7 +24,7 @@ app.post('/create/game/:name', function(req,res) {
     res.json({newGame:'created for '+req.params.name});
 });
 
-app.post('/create/game/:name/create/scene', function(req,res) {
+app.post('/create/scene/:name', function(req,res) {
     game.createScene(req,res,db);
     //auth.user(req,res);
     res.json({newScene:'created for '+req.params.name});
