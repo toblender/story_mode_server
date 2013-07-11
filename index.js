@@ -55,6 +55,10 @@ app.post('/frame/create/:name/:scene',function(req,res){
     res.json({frame:'created for '+req.params.name});
 });
 
+app.post('/frame/update/:name/:scene/:frame',function(req,res){
+    frame.update(req,res,db);
+    res.json({frame:'updated for '+req.params.name});
+});
 //Start to listen to port
 
 app.listen(3000);
