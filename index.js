@@ -11,6 +11,7 @@ app.use(express.bodyParser());
 var auth = require('./modules/authenticate');
 var game = require('./modules/game');
 var scene= require('./modules/scene');
+var frame= require('./modules/frame');
 
 console.log('ProgrammerRPG RESTAPI up and at them.');
 //TODO set up https
@@ -43,10 +44,15 @@ app.post('/scene/update/:name/:number', function(req,res) {
     res.json({scene:'updated for '+req.params.name});
 });
 
-//Frame API
 app.post('/scene/drop/:name/:number',function(req,res){
     scene.drop(req,res,db);
     res.json({scene:'dropped for '+req.params.name});
+});
+
+//Frame API
+app.post('/frame/create/:name/:scene',function(req,res){
+    frame.create(req,res,db);
+    res.json({frame:'created for '+req.params.name});
 });
 
 //Start to listen to port
