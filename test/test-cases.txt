@@ -1,0 +1,20 @@
+echo "Create Game"
+curl -X POST -d @game-sample.json http://localhost:3000/game/create/newgame --header "Content-Type:application/json"
+
+echo "Create Scene"
+curl -X POST -d @scene-sample.json http://localhost:3000/scene/create/newgame --header "Content-Type:application/json"
+
+echo "Update Scene"
+curl -X POST -d @scene-update.json http://localhost:3000/scene/update/newgame/1 --header "Content-Type:application/json"
+
+echo "Delete Scene"
+curl -X POST -d @scene-update.json http://localhost:3000/scene/drop/newgame/1 --header "Content-Type:application/json"
+
+echo "Create Frame"
+curl -X POST -d @frame-sample.json http://localhost:3000/frame/create/newgame/0 --header "Content-Type:application/json"
+
+echo "Update Frame"
+curl -X POST -d @frame-sample.json http://localhost:3000/frame/update/newgame/0/0 --header "Content-Type:application/json"
+
+echo "Drop Frame"
+curl -X POST -d @frame-sample.json http://localhost:3000/frame/drop/newgame/0/1 --header "Content-Type:application/json"
