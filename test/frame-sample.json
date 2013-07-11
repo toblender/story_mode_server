@@ -6,13 +6,13 @@
         "contents": "Savedcharacter"
     },
     {
-        "style": "top:40px;left:417px;height:50px;width:300px;z-index:2;background:#22b159;background-image:url('');",
+        "style": "",
         "type": "timer",
         "id": "actor-1-2",
         "contents": "Savedtimer"
     },
     {
-        "style": "top:426px;left:92px;height:200px;width:600px;z-index:0;background:#a94bc3;background-image:url('');",
+        "style": "",
         "type": "textbox",
         "id": "actor-2-3",
         "contents": "Savedtextbox"

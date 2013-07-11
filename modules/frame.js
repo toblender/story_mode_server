@@ -17,12 +17,13 @@ exports.create = function(req,res,db){
     var gameCollection= db.get(gameName);
     var sceneNumber = req.params.scene;
     var frameInfo=req.body;
-    console.log('Creating new scene for: '+gameName+" scene: "+sceneNumber);
-    
+    console.log('Creating new frame for: '+gameName+" scene: "+sceneNumber);
+   
+    //TODO generalize this to push obj 
     var frameObj = {};
     frameObj['scenes.'+sceneNumber+'.frames']=frameInfo;
     gameCollection.update({shortName:gameName},{$push:frameObj},HandleResponse);
-    console.log('DONE: Creating new scene for: '+gameName+" scene: "+sceneNumber);
+    console.log('DONE: Creating new frame for: '+gameName+" scene: "+sceneNumber);
 }
 
 //Read
@@ -37,14 +38,14 @@ exports.update = function(req,res,db){
     var sceneNumber = 'scenes.'+req.params.scene;
     var frameNumber= 'frames.'+req.params.frame;
     var frameInfo= req.body;
-    console.log('Updating scene for: '+gameName+" frame: "+frameNumber);
+    console.log('Updating frame for: '+gameName+" scene: "+frameNumber);
     //Away around it is to make obj ahead of time then pass that info the value area
     //gameCollection.update({shortName:gameName},{$set:{'scenes.'+req.params.number:sceneInfo}},HandleResponse);
     
     var frameObj= {};
     frameObj[sceneNumber+'.'+frameNumber]=frameInfo;
     gameCollection.update({shortName:gameName},{$set:frameObj},HandleResponse);
-    console.log('DONE: Updating scene for: '+gameName+" frame: "+frameNumber);
+    console.log('DONE: Updating frame for: '+gameName+" scene: "+frameNumber);
 }
 
 
@@ -53,15 +54,17 @@ exports.update = function(req,res,db){
 exports.drop = function(req,res,db){
     var gameName = req.params.name;
     var gameCollection = db.get(gameName);
-    var sceneNumber = 'scenes.'+req.params.number;
-    var pullNull = null;
-    console.log('Delete scene for: '+gameName);
+    var sceneNumber = 'scenes.'+req.params.scene;
+    var frameNumber= 'frames.'+req.params.frame;
+    console.log('Drop frame for: '+gameName+" scene: "+frameNumber);
     var unsetObj ={}
-    unsetObj[sceneNumber]='';
+    unsetObj[sceneNumber+'.'+frameNumber]='';
+    var pullObj ={}
+    pullObj[sceneNumber+'.'+'frames']=null;
     gameCollection.update({shortName:gameName},{$unset:unsetObj},HandleResponse);
     //Pulling may cause the site to slow down, as it's resizing, might be best to be null for now
-    gameCollection.update({shortName:gameName},{$pull:{scenes:pullNull}},HandleResponse);
-    console.log('DONE: Delete scene for: '+gameName);
+    gameCollection.update({shortName:gameName},{$pull:pullObj},HandleResponse);
+    console.log('DONE: Drop frame for: '+gameName+" scene: "+frameNumber);
 }
 
 //TODO Reorder

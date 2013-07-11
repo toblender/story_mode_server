@@ -57,8 +57,14 @@ app.post('/frame/create/:name/:scene',function(req,res){
 
 app.post('/frame/update/:name/:scene/:frame',function(req,res){
     frame.update(req,res,db);
-    res.json({frame:'updated for '+req.params.name});
+    res.json({frame:'updated for '+req.params.name+' scene: '+req.params.scene});
 });
+
+app.post('/frame/drop/:name/:scene/:frame',function(req,res){
+    frame.drop(req,res,db);
+    res.json({frame:'dropped for '+req.params.name+' scene: '+req.params.scene});
+});
+
 //Start to listen to port
 
 app.listen(3000);
