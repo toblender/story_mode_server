@@ -21,46 +21,46 @@ console.log('ProgrammerRPG RESTAPI up and at them.');
 app.use(express.static(__dirname + '/app'));
 
 //Game API
-app.post('/game/create/:name', function(req,res) {
+app.post('/api/game/create/:name', function(req,res) {
     game.create(req,res,db);
     //auth.user(req,res);
     res.json({newGame:'created for '+req.params.name});
 });
 
-app.get('/game/read/:name',function(req,res){
+app.get('/api/game/read/:name',function(req,res){
     game.read(req,res,db);
 });
 
 //Scene API
-app.post('/scene/create/:name', function(req,res) {
+app.post('/api/scene/create/:name', function(req,res) {
     scene.create(req,res,db);
     //auth.user(req,res);
     res.json({scene:'created for '+req.params.name});
 });
 
-app.post('/scene/update/:name/:number', function(req,res) {
+app.post('/api/scene/update/:name/:number', function(req,res) {
     scene.update(req,res,db);
     //auth.user(req,res);
     res.json({scene:'updated for '+req.params.name});
 });
 
-app.post('/scene/drop/:name/:number',function(req,res){
+app.post('/api/scene/drop/:name/:number',function(req,res){
     scene.drop(req,res,db);
     res.json({scene:'dropped for '+req.params.name});
 });
 
 //Frame API
-app.post('/frame/create/:name/:scene',function(req,res){
+app.post('/api/frame/create/:name/:scene',function(req,res){
     frame.create(req,res,db);
     res.json({frame:'created for '+req.params.name});
 });
 
-app.post('/frame/update/:name/:scene/:frame',function(req,res){
+app.post('/api/frame/update/:name/:scene/:frame',function(req,res){
     frame.update(req,res,db);
     res.json({frame:'updated for '+req.params.name+' scene: '+req.params.scene});
 });
 
-app.post('/frame/drop/:name/:scene/:frame',function(req,res){
+app.post('/api/frame/drop/:name/:scene/:frame',function(req,res){
     frame.drop(req,res,db);
     res.json({frame:'dropped for '+req.params.name+' scene: '+req.params.scene});
 });

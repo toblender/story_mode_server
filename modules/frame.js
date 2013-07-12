@@ -16,7 +16,8 @@ exports.create = function(req,res,db){
     var gameName = req.params.name;
     var gameCollection= db.get(gameName);
     var sceneNumber = req.params.scene;
-    var frameInfo=req.body;
+    //TODO Only capture frame Info for now
+    var frameInfo=req.body.frameInfo;
     console.log('Creating new frame for: '+gameName+" scene: "+sceneNumber);
    
     //TODO generalize this to push obj 
