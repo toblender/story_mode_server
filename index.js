@@ -67,4 +67,5 @@ app.post('/frame/drop/:name/:scene/:frame',function(req,res){
 
 //Start to listen to port
 
-app.listen(3000);
+//app.listen(9000);
+exports = module.exports = app;
