@@ -38,7 +38,7 @@ exports.update = function(req,res,db){
     var gameCollection = db.get(gameName);
     var sceneNumber = 'scenes.'+req.params.scene;
     var frameNumber= 'frames.'+req.params.frame;
-    var frameInfo= req.body;
+    var frameInfo= req.body.frameInfo;
     console.log('Updating frame for: '+gameName+" scene: "+frameNumber);
     //Away around it is to make obj ahead of time then pass that info the value area
     //gameCollection.update({shortName:gameName},{$set:{'scenes.'+req.params.number:sceneInfo}},HandleResponse);

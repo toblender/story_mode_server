@@ -10,12 +10,19 @@ function HandleResponse(err,doc){
     }
 }
 
+function blankScene(){
+    var blankSceneObj = {
+        'frames':[]
+    }
+    return blankSceneObj;
+}
+
 exports.create = function(req,res,db){
     //Find the game to add a scene to
         //Then add it
     var gameName = req.params.name;
     var gameCollection= db.get(gameName);
-    var sceneInfo =req.body;
+    var sceneInfo = blankScene();
     console.log('Creating new scene for: '+gameName);
     gameCollection.update({shortName:gameName},{$push:{scenes:sceneInfo}},HandleResponse);
     console.log('DONE: creating new scene for: '+gameName);
