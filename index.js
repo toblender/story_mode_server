@@ -1,5 +1,5 @@
 'use strict';
-
+var exec = require('child_process').exec;
 var mongo = require('mongodb');
 var express = require('express');
 var monk = require('monk');
@@ -13,7 +13,14 @@ var game = require('./modules/game');
 var scene= require('./modules/scene');
 var frame= require('./modules/frame');
 
-console.log('ProgrammerRPG RESTAPI up and at them.');
+console.log('Story_mode RESTAPI is starting...');
+
+console.log('Starting up mongoDB');
+var mongodb_cmd = 'mongod';
+exec(mongodb_cmd, function(error, stdout, stderr) {
+  // command output is in stdout
+});
+
 //TODO set up https
 //TODO do authentication
 
@@ -67,5 +74,6 @@ app.post('/api/frame/drop/:name/:scene/:frame',function(req,res){
 
 //Start to listen to port
 
-//app.listen(9000);
+//app.listen(3000);
 exports = module.exports = app;
+console.log('Story_mode RESTAPI is up and at em...');

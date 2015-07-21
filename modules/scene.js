@@ -38,7 +38,7 @@ exports.update = function(req,res,db){
     var gameName = req.params.name;
     var gameCollection = db.get(gameName);
     var sceneNumber = 'scenes.'+req.params.number;
-    var sceneInfo = req.body;
+    var sceneInfo = req.body.sceneInfo;
     console.log('Updating scene for: '+gameName);
     //Away around it is to make obj ahead of time then pass that info the value area
     //gameCollection.update({shortName:gameName},{$set:{'scenes.'+req.params.number:sceneInfo}},HandleResponse);
